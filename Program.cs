@@ -29,14 +29,14 @@ class Program
        InsertCard(connection, "Lirien Moonshadow", 100, 10, "http://localhost:5000/img/lirien-moonshadow.jpg");
        InsertCard(connection, "Alaric Flamecaller", 100, 10, "http://localhost:5000/img/alaric-flamecaller.jpg");
     
-        InsertDeck(connection, "Snake Pit", 75);
-        InsertDeck(connection, "The Matrix", 80);
-        InsertDeck(connection, "Doom Burger", 65);
+       InsertDeck(connection, "Snake Pit", 75);
+       InsertDeck(connection, "The Matrix", 80);
+       InsertDeck(connection, "Doom Burger", 65);
 
-        InsertAttack(connection, "sword", 60, 40);
-        InsertAttack(connection, "rope", 20, 75);
-        InsertAttack(connection, "fire", 80, 30);
-        */
+       InsertAttack(connection, "sword", 60, 40);
+       InsertAttack(connection, "rope", 20, 75);
+       InsertAttack(connection, "fire", 80, 30);
+       */
 
     }
 
@@ -108,5 +108,29 @@ class Program
         connection.Execute(sql, new{Title = title, MojoCost = mojoCost, StaminaCost = staminaCost});
     }
 
+        static void DisplayUsers(SQLiteConnection connection)
+    {
+        var users = connection.Query<User>("SELECT * FROM Users");
+        foreach (var user in users)
+        {
+            Console.WriteLine(user);
+        }
+    }
+        static void DisplayCards(SQLiteConnection connection)
+    {
+        var cards = connection.Query<Card>("SELECT * FROM Cards");
+        foreach (var card in cards)
+        {
+            Console.WriteLine(card);
+        }
+    }
+        static void DisplayAttack(SQLiteConnection connection)
+    {
+        var attacks = connection.Query<Attack>("SELECT * FROM Attack");
+        foreach (var attack in attacks)
+        {
+            Console.WriteLine(attack);
+        }
+    }
 }
  
